@@ -2,48 +2,39 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover" />
     <title>Undangan Pernikahan - Mario & Angela</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="dashboard-page">
-    <!-- Split Screen Container -->
     <div class="split-container">
       <!-- LEFT SIDE - SLIDESHOW -->
       <aside class="slideshow-panel">
         <div class="slideshow-container" id="slideshow"></div>
 
-        <!-- Navigation Arrows -->
-        <button class="slide-nav slide-prev" id="prevSlide" aria-label="Previous slide">
+        <button class="slide-nav slide-prev" id="prevSlide" aria-label="Previous">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
-        <button class="slide-nav slide-next" id="nextSlide" aria-label="Next slide">
+        <button class="slide-nav slide-next" id="nextSlide" aria-label="Next">
           <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <!-- Dots Navigation -->
         <div class="slide-dots" id="slideDots"></div>
-
-        <!-- Slide Counter -->
         <div class="slide-counter" id="slideCounter"><span class="current">1</span> / <span class="total">8</span></div>
 
-        <!-- INFO OVERLAY -->
         <div class="slideshow-info">
           <h2 class="info-names">Mario & Angela</h2>
           <p class="info-date">Minggu, 28 Juni 2026</p>
         </div>
-
-        <!-- Overlay -->
-        <div class="slideshow-overlay"></div>
       </aside>
 
       <!-- RIGHT SIDE - SCROLLABLE CONTENT -->
       <main class="content-panel" id="contentPanel">
-        <!-- SECTION 1: HOME -->
+        <!-- SECTION HOME -->
         <section class="section section-home" id="home">
           <div class="section-inner">
             <div class="home-header reveal">
@@ -55,15 +46,17 @@
               <p>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud menyelenggarakan pernikahan:</p>
             </div>
 
-            <div class="home-couple reveal reveal-delay-2">
-              <div class="couple-name-item">
-                <span class="flower-icon"><i class="fa-solid fa-spa"></i></span>
-                <span class="name-text">Mario Indra Subagja</span>
+            <div class="home-couple-names reveal reveal-delay-2">
+              <div class="couple-name-row">
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
+                <span class="name-script-large">Mario Indra Subagja</span>
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
               </div>
               <span class="couple-ampersand">&</span>
-              <div class="couple-name-item">
-                <span class="flower-icon"><i class="fa-solid fa-spa"></i></span>
-                <span class="name-text">Angela Putri</span>
+              <div class="couple-name-row">
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
+                <span class="name-script-large">Angela Putri</span>
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
               </div>
             </div>
 
@@ -99,16 +92,18 @@
           </div>
         </section>
 
-        <!-- SECTION 2: MEMPELAI (VERTICAL LAYOUT) -->
+        <!-- SECTION MEMPELAI -->
         <section class="section section-couple" id="couple">
           <div class="section-inner">
             <h2 class="section-title reveal">Mempelai</h2>
 
-            <!-- Mempelai Pria -->
             <div class="couple-vertical reveal reveal-delay-1">
-              <h3 class="couple-name">MARIO INDRA SUBAGJA</h3>
-              <p class="couple-parents">Putra dari</p>
-              <p class="couple-parents">Bapak Hendra Subagja <span class="ampersand">&</span> Ibu Dewi Sartika</p>
+              <div class="couple-name-wrapper">
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
+                <h3 class="couple-name-script">Mario Indra Subagja</h3>
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
+              </div>
+              <p class="couple-parents">Putra dari Bapak Hendra Subagja <span class="ampersand">&</span> Ibu Dewi Sartika</p>
               <p class="couple-sibling">Anak ke-1 dari 2 bersaudara</p>
               <div class="couple-photo-wrapper">
                 <div class="couple-photo">
@@ -117,16 +112,17 @@
               </div>
             </div>
 
-            <!-- Flower Divider -->
             <div class="couple-divider reveal reveal-delay-2">
-              <i class="fa-solid fa-spa"></i>
+              <i class="fa-solid fa-heart"></i>
             </div>
 
-            <!-- Mempelai Wanita -->
             <div class="couple-vertical reveal reveal-delay-3">
-              <h3 class="couple-name">ANGELA PUTRI</h3>
-              <p class="couple-parents">Putri dari</p>
-              <p class="couple-parents">Bapak Budiman <span class="ampersand">&</span> Ibu Ratna Sari</p>
+              <div class="couple-name-wrapper">
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
+                <h3 class="couple-name-script">Angela Putri</h3>
+                <span class="flower-deco"><i class="fa-solid fa-spa"></i></span>
+              </div>
+              <p class="couple-parents">Putri dari Bapak Budiman <span class="ampersand">&</span> Ibu Ratna Sari</p>
               <p class="couple-sibling">Anak ke-1 dari 2 bersaudara</p>
               <div class="couple-photo-wrapper">
                 <div class="couple-photo">
@@ -137,44 +133,44 @@
           </div>
         </section>
 
-        <!-- SECTION 3: ACARA -->
+        <!-- SECTION ACARA -->
         <section class="section section-events" id="events">
           <div class="section-inner">
             <h2 class="section-title reveal">Jadwal Acara</h2>
 
             <div class="events-grid">
-              <!-- Akad Nikah -->
               <div class="event-card reveal reveal-delay-1">
+                <div class="card-flower-decor top-right"><i class="fa-solid fa-spa"></i></div>
                 <div class="event-icon">
                   <i class="fa-solid fa-mosque"></i>
                 </div>
                 <h3 class="event-name">Akad Nikah</h3>
                 <div class="event-detail">
                   <p><i class="fa-regular fa-calendar"></i> Minggu</p>
-                  <p class="event-date">28 Juni 2026</p>
+                  <p class="event-date-bold">28 Juni 2026</p>
                   <p><i class="fa-regular fa-clock"></i> 06:00 - 10:00 WIB</p>
                   <p><i class="fa-solid fa-location-dot"></i> Gedung Serbaguna Jakarta</p>
                 </div>
-                <div class="event-dress"><i class="fa-solid fa-shirt"></i> Busana Muslim / Sopan</div>
+                <div class="event-dresscode"><i class="fa-solid fa-shirt"></i> Busana Muslim / Sopan</div>
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad+Nikah+Mario+%26+Angela&dates=20260628T010000Z/20260628T030000Z" target="_blank" class="btn-secondary">
                   <i class="fa-regular fa-calendar-plus"></i>
                   <span>Google Calendar</span>
                 </a>
               </div>
 
-              <!-- Resepsi -->
               <div class="event-card reveal reveal-delay-2">
+                <div class="card-flower-decor top-right"><i class="fa-solid fa-spa"></i></div>
                 <div class="event-icon">
                   <i class="fa-solid fa-champagne-glasses"></i>
                 </div>
                 <h3 class="event-name">Resepsi</h3>
                 <div class="event-detail">
                   <p><i class="fa-regular fa-calendar"></i> Minggu</p>
-                  <p class="event-date">28 Juni 2026</p>
+                  <p class="event-date-bold">28 Juni 2026</p>
                   <p><i class="fa-regular fa-clock"></i> 10:00 - Selesai WIB</p>
                   <p><i class="fa-solid fa-location-dot"></i> Gedung Serbaguna Jakarta</p>
                 </div>
-                <div class="event-dress"><i class="fa-solid fa-shirt"></i> Busana Muslim / Sopan</div>
+                <div class="event-dresscode"><i class="fa-solid fa-shirt"></i> Busana Muslim / Sopan</div>
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi+Pernikahan+Mario+%26+Angela&dates=20260628T030000Z/20260628T070000Z" target="_blank" class="btn-secondary">
                   <i class="fa-regular fa-calendar-plus"></i>
                   <span>Google Calendar</span>
@@ -184,22 +180,21 @@
           </div>
         </section>
 
-        <!-- SECTION 4: GALLERY (MASONRY) -->
+        <!-- SECTION GALERI -->
         <section class="section section-gallery" id="gallery">
           <div class="section-inner">
             <h2 class="section-title reveal">Galeri Foto</h2>
-
             <div class="gallery-masonry reveal reveal-delay-1" id="galleryGrid"></div>
           </div>
         </section>
 
-        <!-- SECTION 5: RSVP & UCAPAN -->
+        <!-- SECTION RSVP -->
         <section class="section section-rsvp" id="rsvp">
           <div class="section-inner">
             <h2 class="section-title reveal">Ucapan & Konfirmasi</h2>
 
-            <!-- RSVP Form -->
             <form class="rsvp-form reveal reveal-delay-1" id="rsvpForm">
+              <div class="card-flower-decor top-right"><i class="fa-solid fa-spa"></i></div>
               <div class="form-group">
                 <input type="text" id="guestName" name="guestName" placeholder=" " required minlength="3" />
                 <label for="guestName">Nama Lengkap</label>
@@ -226,20 +221,21 @@
               </button>
             </form>
 
-            <!-- Wishes List -->
             <div class="wishes-container reveal reveal-delay-2">
+              <div class="card-flower-decor top-right"><i class="fa-solid fa-spa"></i></div>
               <h3 class="wishes-title">Ucapan Terbaru</h3>
               <div class="wishes-list" id="wishesList"></div>
             </div>
           </div>
         </section>
 
-        <!-- SECTION 6: LOCATION -->
+        <!-- SECTION LOKASI -->
         <section class="section section-location" id="location">
           <div class="section-inner">
             <h2 class="section-title reveal">Lokasi Acara</h2>
 
             <div class="location-card reveal reveal-delay-1">
+              <div class="card-flower-decor top-right"><i class="fa-solid fa-spa"></i></div>
               <div class="location-address">
                 <h3><i class="fa-solid fa-map-marker-alt"></i> Gedung Serbaguna Jakarta</h3>
                 <p>Jl. Gatot Subroto No. 123<br />Jakarta Selatan<br />DKI Jakarta</p>
@@ -298,7 +294,7 @@
       </button>
     </div>
 
-    <!-- Audio Element -->
+    <!-- Audio -->
     <audio id="bgMusic" loop>
       <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
     </audio>
@@ -311,13 +307,13 @@
       <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <img src="" alt="Gallery Image" id="lightboxImg" />
+      <img src="" alt="Gallery" id="lightboxImg" />
       <button class="lightbox-nav lightbox-next" id="lightboxNext">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
     </div>
 
-    <!-- BOTTOM NAVIGATION -->
+    <!-- Bottom Navigation -->
     <nav class="bottom-nav" id="bottomNav">
       <a href="#home" class="nav-item active" data-target="home">
         <i class="fa-solid fa-house"></i>

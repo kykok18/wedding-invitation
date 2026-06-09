@@ -31,11 +31,29 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function initCoverPage() {
-  // Add subtle animation to flower decorations
-  const flowers = document.querySelectorAll(".flower-decor");
-  flowers.forEach((flower, index) => {
-    flower.style.animation = `floatFlower ${6 + index}s ease-in-out infinite`;
-  });
+  createParticles();
+}
+
+function createParticles() {
+  const container = document.getElementById("particles");
+  if (!container) return;
+
+  const count = 28;
+
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+
+    const size = 2 + Math.random() * 4;
+    particle.style.width = size + "px";
+    particle.style.height = size + "px";
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.top = Math.random() * 100 + "%";
+    particle.style.animationDelay = Math.random() * 6 + "s";
+    particle.style.animationDuration = 5 + Math.random() * 4 + "s";
+
+    container.appendChild(particle);
+  }
 }
 
 function initDashboardPage() {
@@ -70,17 +88,17 @@ const slides = [
 ];
 
 function initSlideshow() {
-  const slideshowContainer = document.getElementById("slideshow");
+  const container = document.getElementById("slideshow");
   const dotsContainer = document.getElementById("slideDots");
   const counter = document.getElementById("slideCounter");
 
-  if (!slideshowContainer || !dotsContainer || !counter) return;
+  if (!container || !dotsContainer || !counter) return;
 
   slides.forEach((slide, index) => {
-    const slideElement = document.createElement("div");
-    slideElement.className = `slide ${index === 0 ? "active" : ""}`;
-    slideElement.innerHTML = `<img src="${slide.src}" alt="${slide.alt}" loading="lazy">`;
-    slideshowContainer.appendChild(slideElement);
+    const slideEl = document.createElement("div");
+    slideEl.className = `slide ${index === 0 ? "active" : ""}`;
+    slideEl.innerHTML = `<img src="${slide.src}" alt="${slide.alt}" loading="lazy">`;
+    container.appendChild(slideEl);
 
     const dot = document.createElement("button");
     dot.className = `slide-dot ${index === 0 ? "active" : ""}`;
@@ -96,8 +114,8 @@ function initSlideshow() {
 
   startSlideShow();
 
-  slideshowContainer.addEventListener("mouseenter", stopSlideShow);
-  slideshowContainer.addEventListener("mouseleave", startSlideShow);
+  container.addEventListener("mouseenter", stopSlideShow);
+  container.addEventListener("mouseleave", startSlideShow);
 }
 
 function goToSlide(index) {
@@ -139,33 +157,33 @@ function stopSlideShow() {
 }
 
 /* ========================================
-   GALLERY - MASONRY WITH VARIED HEIGHTS
+   GALLERY (MASONRY)
 ======================================== */
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=500&fit=crop", alt: "Portrait 1", height: 500 },
-  { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=300&fit=crop", alt: "Landscape 1", height: 300 },
-  { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&h=350&fit=crop", alt: "Square 1", height: 350 },
-  { src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=500&fit=crop", alt: "Portrait 2", height: 500 },
-  { src: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=400&h=300&fit=crop", alt: "Landscape 2", height: 300 },
-  { src: "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=400&h=300&fit=crop", alt: "Landscape 3", height: 300 },
-  { src: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=400&h=500&fit=crop", alt: "Portrait 3", height: 500 },
-  { src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&h=300&fit=crop", alt: "Landscape 4", height: 300 },
-  { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=350&fit=crop", alt: "Square 2", height: 350 },
+  { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=480&fit=crop", alt: "Portrait 1" },
+  { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=280&fit=crop", alt: "Landscape 1" },
+  { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&h=340&fit=crop", alt: "Square 1" },
+  { src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=500&fit=crop", alt: "Portrait 2" },
+  { src: "https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?w=400&h=280&fit=crop", alt: "Landscape 2" },
+  { src: "https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=400&h=310&fit=crop", alt: "Landscape 3" },
+  { src: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?w=400&h=520&fit=crop", alt: "Portrait 3" },
+  { src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&h=280&fit=crop", alt: "Landscape 4" },
+  { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=360&fit=crop", alt: "Square 2" },
 ];
 
 function initGallery() {
-  const galleryGrid = document.getElementById("galleryGrid");
-  if (!galleryGrid) return;
+  const grid = document.getElementById("galleryGrid");
+  if (!grid) return;
 
   galleryImages.forEach((img, index) => {
     const item = document.createElement("div");
     item.className = "gallery-item";
-    item.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy" style="height: ${img.height}px; object-fit: cover;">`;
+    item.innerHTML = `<img src="${img.src}" alt="${img.alt}" loading="lazy">`;
     item.addEventListener("click", () => {
       currentLightboxIndex = index;
       openLightbox(slides[index % slides.length].src);
     });
-    galleryGrid.appendChild(item);
+    grid.appendChild(item);
   });
 }
 
@@ -216,18 +234,18 @@ function initLightbox() {
 
 function openLightbox(src) {
   const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-  if (!lightbox || !lightboxImg) return;
+  const img = document.getElementById("lightboxImg");
+  if (!lightbox || !img) return;
 
-  lightboxImg.src = src;
+  img.src = src;
   lightbox.classList.add("active");
   document.body.style.overflow = "hidden";
 }
 
 function updateLightboxImage() {
-  const lightboxImg = document.getElementById("lightboxImg");
-  if (lightboxImg) {
-    lightboxImg.src = galleryImages[currentLightboxIndex].src;
+  const img = document.getElementById("lightboxImg");
+  if (img) {
+    img.src = slides[currentLightboxIndex % slides.length].src;
   }
 }
 
@@ -245,15 +263,15 @@ function closeLightbox() {
 function initCountdown() {
   const weddingDate = WEDDING_CONFIG.weddingDate;
 
-  function updateCountdown() {
-    const countdownContainer = document.getElementById("countdown");
-    if (!countdownContainer) return;
+  function update() {
+    const container = document.getElementById("countdown");
+    if (!container) return;
 
     const now = new Date();
     const diff = weddingDate - now;
 
     if (diff <= 0) {
-      countdownContainer.innerHTML = `
+      container.innerHTML = `
         <div class="countdown-finished">
           <i class="fa-solid fa-heart"></i>
           <span>Acara Telah Berlangsung</span>
@@ -267,19 +285,19 @@ function initCountdown() {
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    const countDays = document.getElementById("countDays");
-    const countHours = document.getElementById("countHours");
-    const countMinutes = document.getElementById("countMinutes");
-    const countSeconds = document.getElementById("countSeconds");
+    const d = document.getElementById("countDays");
+    const h = document.getElementById("countHours");
+    const m = document.getElementById("countMinutes");
+    const s = document.getElementById("countSeconds");
 
-    if (countDays) countDays.textContent = String(days).padStart(2, "0");
-    if (countHours) countHours.textContent = String(hours).padStart(2, "0");
-    if (countMinutes) countMinutes.textContent = String(minutes).padStart(2, "0");
-    if (countSeconds) countSeconds.textContent = String(seconds).padStart(2, "0");
+    if (d) d.textContent = String(days).padStart(2, "0");
+    if (h) h.textContent = String(hours).padStart(2, "0");
+    if (m) m.textContent = String(minutes).padStart(2, "0");
+    if (s) s.textContent = String(seconds).padStart(2, "0");
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  update();
+  setInterval(update, 1000);
 }
 
 /* ========================================
@@ -294,10 +312,10 @@ const defaultWishes = [
 function initRSVP() {
   const form = document.getElementById("rsvpForm");
   if (!form) return;
-  form.addEventListener("submit", handleRSVPSubmit);
+  form.addEventListener("submit", handleSubmit);
 }
 
-function handleRSVPSubmit(e) {
+function handleSubmit(e) {
   e.preventDefault();
 
   const name = document.getElementById("guestName").value.trim();
@@ -313,19 +331,19 @@ function handleRSVPSubmit(e) {
   wishes.unshift({ name, attendance, message, timestamp: Date.now() });
   localStorage.setItem("weddingWishes", JSON.stringify(wishes));
 
-  const whatsappNumber = WEDDING_CONFIG.whatsappNumber;
+  const waNumber = WEDDING_CONFIG.whatsappNumber;
   const text = `*Konfirmasi Kehadiran Pernikahan*\n\nNama: ${name}\nKehadiran: ${attendance}\n\nUcapan:\n${message}`;
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(text)}`;
 
-  window.open(whatsappUrl, "_blank");
+  window.open(waUrl, "_blank");
 
   e.target.reset();
   loadWishes();
 }
 
 function loadWishes() {
-  const wishesList = document.getElementById("wishesList");
-  if (!wishesList) return;
+  const list = document.getElementById("wishesList");
+  if (!list) return;
 
   let wishes = JSON.parse(localStorage.getItem("weddingWishes")) || [];
   if (wishes.length === 0) {
@@ -333,17 +351,17 @@ function loadWishes() {
     localStorage.setItem("weddingWishes", JSON.stringify(wishes));
   }
 
-  wishesList.innerHTML = wishes
+  list.innerHTML = wishes
     .slice(0, 10)
-    .map((wish) => {
-      const attendanceClass = wish.attendance.toLowerCase().replace(/ /g, "-");
-      const initials = wish.name
+    .map((w) => {
+      const cls = w.attendance.toLowerCase().replace(/ /g, "-");
+      const initials = w.name
         .split(" ")
         .map((n) => n[0])
         .join("")
         .toUpperCase()
         .slice(0, 2);
-      const timeAgo = getTimeAgo(wish.timestamp);
+      const time = getTimeAgo(w.timestamp);
 
       return `
       <div class="wish-item">
@@ -351,31 +369,31 @@ function loadWishes() {
           <div class="wish-avatar">
             <div class="wish-avatar-icon">${initials}</div>
             <div>
-              <span class="wish-name">${escapeHtml(wish.name)}</span>
-              <span class="wish-time">${timeAgo}</span>
+              <span class="wish-name">${escapeHtml(w.name)}</span>
+              <span class="wish-time">${time}</span>
             </div>
           </div>
-          <span class="wish-attendance ${attendanceClass}">${wish.attendance}</span>
+          <span class="wish-attendance ${cls}">${w.attendance}</span>
         </div>
-        <p class="wish-message">${escapeHtml(wish.message)}</p>
+        <p class="wish-message">${escapeHtml(w.message)}</p>
       </div>
     `;
     })
     .join("");
 }
 
-function getTimeAgo(timestamp) {
-  if (!timestamp) return "";
-  const diff = Date.now() - timestamp;
-  const minutes = Math.floor(diff / 60000);
-  const hours = Math.floor(diff / 3600000);
+function getTimeAgo(ts) {
+  if (!ts) return "";
+  const diff = Date.now() - ts;
+  const mins = Math.floor(diff / 60000);
+  const hrs = Math.floor(diff / 3600000);
   const days = Math.floor(diff / 86400000);
 
-  if (minutes < 1) return "Baru saja";
-  if (minutes < 60) return `${minutes} menit lalu`;
-  if (hours < 24) return `${hours} jam lalu`;
+  if (mins < 1) return "Baru saja";
+  if (mins < 60) return `${mins} menit lalu`;
+  if (hrs < 24) return `${hrs} jam lalu`;
   if (days < 7) return `${days} hari lalu`;
-  return new Date(timestamp).toLocaleDateString("id-ID");
+  return new Date(ts).toLocaleDateString("id-ID");
 }
 
 function escapeHtml(text) {
@@ -388,24 +406,24 @@ function escapeHtml(text) {
    MUSIC PLAYER
 ======================================== */
 function initMusicPlayer() {
-  const musicToggle = document.getElementById("musicToggle");
-  const bgMusic = document.getElementById("bgMusic");
-  const musicIcon = document.getElementById("musicIcon");
+  const toggle = document.getElementById("musicToggle");
+  const audio = document.getElementById("bgMusic");
+  const icon = document.getElementById("musicIcon");
 
-  if (!musicToggle || !bgMusic || !musicIcon) return;
+  if (!toggle || !audio || !icon) return;
 
   let isPlaying = false;
-  let userInteracted = false;
+  let interacted = false;
 
   const startOnInteraction = () => {
-    if (!userInteracted) {
-      userInteracted = true;
-      bgMusic
+    if (!interacted) {
+      interacted = true;
+      audio
         .play()
         .then(() => {
           isPlaying = true;
-          musicIcon.className = "fa-solid fa-pause music-icon";
-          musicToggle.classList.add("playing");
+          icon.className = "fa-solid fa-pause music-icon";
+          toggle.classList.add("playing");
         })
         .catch(() => {});
     }
@@ -414,22 +432,22 @@ function initMusicPlayer() {
 
   document.addEventListener("click", startOnInteraction);
 
-  musicToggle.addEventListener("click", () => {
+  toggle.addEventListener("click", () => {
     if (isPlaying) {
-      bgMusic.pause();
-      musicIcon.className = "fa-solid fa-music music-icon";
-      musicToggle.classList.remove("playing");
+      audio.pause();
+      icon.className = "fa-solid fa-music music-icon";
+      toggle.classList.remove("playing");
     } else {
-      bgMusic.play().catch(() => {});
-      musicIcon.className = "fa-solid fa-pause music-icon";
-      musicToggle.classList.add("playing");
+      audio.play().catch(() => {});
+      icon.className = "fa-solid fa-pause music-icon";
+      toggle.classList.add("playing");
     }
     isPlaying = !isPlaying;
   });
 
-  bgMusic.addEventListener("ended", () => {
-    bgMusic.currentTime = 0;
-    bgMusic.play().catch(() => {});
+  audio.addEventListener("ended", () => {
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
   });
 }
 
@@ -438,9 +456,9 @@ function initMusicPlayer() {
 ======================================== */
 function initScrollReveal() {
   const reveals = document.querySelectorAll(".reveal");
-  const contentPanel = document.getElementById("contentPanel");
+  const panel = document.getElementById("contentPanel");
 
-  const revealOnScroll = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -449,31 +467,31 @@ function initScrollReveal() {
       });
     },
     {
-      root: contentPanel,
+      root: panel,
       threshold: 0.15,
-      rootMargin: "0px 0px -30px 0px",
+      rootMargin: "0px 0px -20px 0px",
     },
   );
 
-  reveals.forEach((reveal) => revealOnScroll.observe(reveal));
+  reveals.forEach((r) => observer.observe(r));
 }
 
 function initBottomNav() {
-  const navItems = document.querySelectorAll(".nav-item");
+  const items = document.querySelectorAll(".nav-item");
   const sections = document.querySelectorAll(".section");
-  const contentPanel = document.getElementById("contentPanel");
+  const panel = document.getElementById("contentPanel");
 
-  if (!contentPanel) return;
+  if (!panel) return;
 
-  navItems.forEach((item) => {
+  items.forEach((item) => {
     item.addEventListener("click", (e) => {
       e.preventDefault();
       const targetId = item.getAttribute("data-target");
-      const targetSection = document.getElementById(targetId);
+      const target = document.getElementById(targetId);
 
-      if (targetSection) {
-        contentPanel.scrollTo({
-          top: targetSection.offsetTop - 20,
+      if (target) {
+        panel.scrollTo({
+          top: target.offsetTop - 15,
           behavior: "smooth",
         });
       }
@@ -485,44 +503,28 @@ function initBottomNav() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute("id");
-          navItems.forEach((navItem) => {
-            navItem.classList.remove("active");
-            if (navItem.getAttribute("data-target") === id) {
-              navItem.classList.add("active");
+          items.forEach((item) => {
+            item.classList.remove("active");
+            if (item.getAttribute("data-target") === id) {
+              item.classList.add("active");
             }
           });
         }
       });
     },
     {
-      root: contentPanel,
+      root: panel,
       rootMargin: "-20% 0px -60% 0px",
       threshold: 0,
     },
   );
 
-  sections.forEach((section) => observer.observe(section));
+  sections.forEach((s) => observer.observe(s));
 }
 
 function updateMapsLink() {
-  const mapsLink = document.getElementById("mapsLink");
-  if (mapsLink && WEDDING_CONFIG.mapsLink) {
-    mapsLink.href = WEDDING_CONFIG.mapsLink;
+  const link = document.getElementById("mapsLink");
+  if (link && WEDDING_CONFIG.mapsLink) {
+    link.href = WEDDING_CONFIG.mapsLink;
   }
 }
-
-/* ========================================
-   FLOAT ANIMATION FOR FLOWERS
-======================================== */
-const floatStyle = document.createElement("style");
-floatStyle.textContent = `
-  @keyframes floatFlower {
-    0%, 100% { transform: rotate(-15deg) translateY(0); }
-    50% { transform: rotate(-15deg) translateY(-10px); }
-  }
-  @keyframes floatFlower {
-    0%, 100% { transform: rotate(165deg) translateY(0); }
-    50% { transform: rotate(165deg) translateY(-10px); }
-  }
-`;
-document.head.appendChild(floatStyle);
